@@ -1,4 +1,4 @@
-from app import db
+from medium import db
 
 class Client(db.Model):
     __tablename__ = 'clients'
@@ -7,6 +7,7 @@ class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
     money = db.Column(db.Integer)
+    #address = db.Column(db.String())
 
     #Initialize database
     def __init__(self, name, money):
@@ -19,7 +20,7 @@ class Client(db.Model):
     #For JSON serialization purposes
     def serialize(self):
         return {
-            'id': self.id,
-            'name': self.name,
-            'money': self.money
+           'id': self.id,
+           'name': self.name,
+           'money': self.money
         }

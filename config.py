@@ -6,9 +6,20 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     #Database URL
-    SQLALCHEMY_DATABASE_URI = 'postgresql://flaskuser:flaskpassword@localhost/flaskdb'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+
+
+class ProductionConfig(Config):
+    DEVELOPMENT = False
+    DEBUG = False
+
+configbyname = {
+    'dev' : DevelopmentConfig,
+    'prod' : ProductionConfig
+}
